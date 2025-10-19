@@ -16,13 +16,11 @@ html, body {
   height: 100%;
   margin: 0;
   font-family: "Poppins","Segoe UI",Arial,sans-serif;
-  -webkit-font-smoothing: antialiased;
   background: linear-gradient(120deg, var(--bg1), var(--bg2));
   color: var(--muted);
   overflow: hidden;
 }
 
-/* Khung chính */
 .stage {
   position: relative;
   width: 100%;
@@ -119,7 +117,7 @@ html, body {
   to { opacity: 1; transform: translateY(-50%) scale(1); }
 }
 
-/* Hiệu ứng nhấp nháy nhẹ */
+/* Glow nền */
 .glow {
   position: absolute;
   left: 50%; top: 50%;
@@ -135,6 +133,25 @@ html, body {
   from { opacity: 0; transform: translate(-50%,-50%) scale(.5); }
   to { opacity: 1; transform: translate(-50%,-50%) scale(1); }
 }
+
+/* Bồ câu bay */
+.dove {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: url('https://upload.wikimedia.org/wikipedia/commons/0/04/Dove_emoji.png') no-repeat center/contain;
+  opacity: 0.85;
+  animation: fly 12s linear infinite;
+}
+@keyframes fly {
+  0% { transform: translate(-10vw, 20vh) scale(0.9) rotate(5deg); opacity: 0.8; }
+  25% { transform: translate(40vw, 5vh) scale(1) rotate(-5deg); }
+  50% { transform: translate(80vw, 25vh) scale(1.1) rotate(5deg); }
+  75% { transform: translate(50vw, 70vh) scale(1) rotate(-3deg); }
+  100% { transform: translate(-10vw, 20vh) scale(0.9) rotate(5deg); opacity: 0.8; }
+}
+.dove:nth-child(2) { animation-delay: 3s; animation-duration: 14s; transform: scale(0.8); }
+.dove:nth-child(3) { animation-delay: 6s; animation-duration: 16s; transform: scale(1.2); }
 
 /* Gợi ý */
 .hint {
@@ -180,6 +197,11 @@ html, body {
       <button class="replay" id="replayBtn">🔁 Xem lại</button>
     </div>
 
+    <!-- Bồ câu -->
+    <div class="dove"></div>
+    <div class="dove"></div>
+    <div class="dove"></div>
+
     <div class="kaito-wrap">
       <img id="kaito" src="kaito.png" alt="Kaito Kid">
     </div>
@@ -190,6 +212,7 @@ html, body {
     </div>
 
     <div class="glow" id="glow"></div>
+
     <div class="hint">Không có nhạc • Nhấn "Xem lại" để phát lại animation</div>
   </div>
 

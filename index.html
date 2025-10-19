@@ -16,6 +16,7 @@ html, body {
   height: 100%;
   margin: 0;
   font-family: "Poppins","Segoe UI",Arial,sans-serif;
+  -webkit-font-smoothing: antialiased;
   background: linear-gradient(120deg, var(--bg1), var(--bg2));
   color: var(--muted);
   overflow: hidden;
@@ -118,7 +119,7 @@ html, body {
   to { opacity: 1; transform: translateY(-50%) scale(1); }
 }
 
-/* Glow */
+/* Hiệu ứng nhấp nháy nhẹ */
 .glow {
   position: absolute;
   left: 50%; top: 50%;
@@ -133,43 +134,6 @@ html, body {
 @keyframes glowIn {
   from { opacity: 0; transform: translate(-50%,-50%) scale(.5); }
   to { opacity: 1; transform: translate(-50%,-50%) scale(1); }
-}
-
-/* Bồ câu bay */
-.dove {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  background: url('https://upload.wikimedia.org/wikipedia/commons/0/04/Dove_emoji.png') no-repeat center/contain;
-  opacity: 0.85;
-  animation: fly 12s linear infinite;
-}
-@keyframes fly {
-  0% { transform: translate(-10vw, 20vh) scale(0.9) rotate(5deg); opacity: 0.8; }
-  25% { transform: translate(40vw, 5vh) scale(1) rotate(-5deg); }
-  50% { transform: translate(80vw, 25vh) scale(1.1) rotate(5deg); }
-  75% { transform: translate(50vw, 70vh) scale(1) rotate(-3deg); }
-  100% { transform: translate(-10vw, 20vh) scale(0.9) rotate(5deg); opacity: 0.8; }
-}
-.dove:nth-child(2) { animation-delay: 3s; animation-duration: 14s; transform: scale(0.8); }
-.dove:nth-child(3) { animation-delay: 6s; animation-duration: 16s; transform: scale(1.2); }
-
-/* QR Code */
-.qr {
-  position: absolute;
-  left: 50%;
-  bottom: 20px;
-  transform: translateX(-50%);
-  text-align: center;
-  font-size: 13px;
-  color: #7a5b6a;
-}
-.qr img {
-  width: 90px;
-  height: 90px;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-  margin-bottom: 6px;
 }
 
 /* Gợi ý */
@@ -206,7 +170,6 @@ html, body {
     flex-direction: column;
     justify-content: center;
   }
-  .qr img { width: 70px; height: 70px; }
 }
 </style>
 </head>
@@ -216,11 +179,6 @@ html, body {
       <div class="title">💌 <strong>Chúc Vy 20/10</strong> <span class="flower">🌷</span></div>
       <button class="replay" id="replayBtn">🔁 Xem lại</button>
     </div>
-
-    <!-- Bồ câu -->
-    <div class="dove"></div>
-    <div class="dove"></div>
-    <div class="dove"></div>
 
     <div class="kaito-wrap">
       <img id="kaito" src="kaito.png" alt="Kaito Kid">
@@ -232,13 +190,6 @@ html, body {
     </div>
 
     <div class="glow" id="glow"></div>
-
-    <!-- QR Code -->
-    <div class="qr">
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://sento2108-collab.github.io" alt="QR code">
-      <div>Quét để xem trang 💖</div>
-    </div>
-
     <div class="hint">Không có nhạc • Nhấn "Xem lại" để phát lại animation</div>
   </div>
 

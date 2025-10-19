@@ -180,16 +180,40 @@
   <audio id="music" src="SongGio.mp3"></audio>
 
   <script>
-    const btn = document.getElementById('openCard');
-    const card = document.getElementById('card');
-    const music = document.getElementById('music');
+  const btn = document.getElementById('openCard');
+  const card = document.getElementById('card');
+  const music = document.getElementById('music');
 
-    btn.addEventListener('click', () => {
-      card.classList.add('show');
-      // Phát nhạc khi người dùng click - không bị chặn
-      music.volume = 0.8;
-      music.play();
-    });
-  </script>
+  // Khi người dùng nhấn mở thiệp
+  btn.addEventListener('click', async () => {
+    card.classList.add('show');
+    btn.style.display = 'none';
+    
+    try {
+      await music.play();
+    } catch (err) {
+      // Nếu bị chặn, hiển thị nút phụ
+      const notice = document.createElement('div');
+      notice.textContent = "🎵 Nhấn vào đây để bật nhạc";
+      notice.style.position = "absolute";
+      notice.style.bottom = "20px";
+      notice.style.left = "50%";
+      notice.style.transform = "translateX(-50%)";
+      notice.style.background = "#fff8";
+      notice.style.padding = "10px 20px";
+      notice.style.borderRadius = "20px";
+      notice.style.cursor = "pointer";
+      notice.style.color = "#e75480";
+      notice.style.fontSize = "18px";
+      notice.style.backdropFilter = "blur(5px)";
+      document.body.appendChild(notice);
+      
+      notice.addEventListener("click", async () => {
+        await music.play();
+        notice.remove();
+      });
+    }
+  });
+</script>
 </body>
 </html>

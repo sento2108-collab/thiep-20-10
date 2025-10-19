@@ -26,7 +26,6 @@
     border-radius: 50%;
     animation: glow 4s infinite alternate;
   }
-
   @keyframes glow {
     from { opacity: 0.8; transform: scale(1); }
     to { opacity: 1; transform: scale(1.1); }
@@ -37,16 +36,14 @@
     background: #fff;
     border-radius: 50%;
     opacity: 0.9;
-    animation: float 15s linear infinite;
+    animation: float 20s linear infinite;
   }
-
   .cloud::before, .cloud::after {
     content: '';
     position: absolute;
     background: #fff;
     border-radius: 50%;
   }
-
   .cloud.small {
     width: 70px;
     height: 40px;
@@ -54,20 +51,16 @@
     left: -150px;
     animation-delay: 3s;
   }
-
   .cloud.small::before { width: 40px; height: 40px; left: -20px; top: 0; }
   .cloud.small::after { width: 40px; height: 40px; left: 40px; top: 0; }
-
   .cloud.large {
     width: 120px;
     height: 60px;
     top: 200px;
     left: -200px;
   }
-
   .cloud.large::before { width: 60px; height: 60px; left: -30px; top: 0; }
   .cloud.large::after { width: 60px; height: 60px; left: 70px; top: 0; }
-
   @keyframes float {
     0% { transform: translateX(0); }
     100% { transform: translateX(120vw); }
@@ -81,7 +74,6 @@
     background: #795548;
     border-radius: 10px;
   }
-
   .tree::before {
     content: '';
     position: absolute;
@@ -92,7 +84,6 @@
     background: radial-gradient(circle, #66bb6a, #388e3c);
     border-radius: 50%;
   }
-
   .tree.left { left: 80px; }
   .tree.right { right: 80px; }
 
@@ -107,10 +98,7 @@
     cursor: pointer;
     transition: all 0.5s;
   }
-
-  .card:hover {
-    transform: scale(1.05);
-  }
+  .card:hover { transform: scale(1.05); }
 
   .letter {
     display: none;
@@ -123,10 +111,62 @@
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     animation: fadeIn 1s ease;
   }
-
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Tim bay */
+  .heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: pink;
+    transform: rotate(45deg);
+    animation: floatUp 4s linear forwards;
+  }
+  .heart::before, .heart::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: pink;
+    border-radius: 50%;
+  }
+  .heart::before { top: -10px; left: 0; }
+  .heart::after { left: -10px; top: 0; }
+  @keyframes floatUp {
+    0% { transform: translateY(0) scale(1) rotate(45deg); opacity: 1; }
+    100% { transform: translateY(-150vh) scale(0.5) rotate(45deg); opacity: 0; }
+  }
+
+  /* Bồ câu */
+  .dove {
+    position: absolute;
+    top: 200px;
+    left: -100px;
+    width: 60px;
+    height: 60px;
+    background: url('kaito.png') center/contain no-repeat;
+    animation: flyAcross 12s linear infinite;
+  }
+  @keyframes flyAcross {
+    0% { transform: translateX(0) translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateX(120vw) translateY(-50px) scale(1.1); opacity: 0.8; }
+  }
+
+  /* Pháo hoa */
+  .sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: gold;
+    border-radius: 50%;
+    animation: sparkle 1s ease-out forwards;
+  }
+  @keyframes sparkle {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(3); opacity: 0; }
   }
 </style>
 </head>
@@ -137,46 +177,52 @@
   <div class="cloud large"></div>
   <div class="tree left"></div>
   <div class="tree right"></div>
+  <div class="dove"></div>
 
   <div class="card" id="openCard">💌 Chúc Vy 20/10 vui vẻ 💖</div>
   <div class="letter" id="letter">Chúc Vy luôn xinh đẹp, hạnh phúc và được yêu thương như một nàng công chúa 🌸</div>
 
-  <!-- 🎵 Âm nhạc -->
-  <audio id="bg-music" src="SongGio.mp3" loop></audio>
+  <audio id="bg-music" src="SongGio.mp3" preload="auto" loop></audio>
 
 <script>
-  const btn = document.getElementById('openCard');
-  const letter = document.getElementById('letter');
-  const music = document.getElementById('bg-music');
+const btn = document.getElementById('openCard');
+const letter = document.getElementById('letter');
+const music = document.getElementById('bg-music');
 
-  // Khi click vào thiệp
-  btn.addEventListener('click', async () => {
-    btn.style.display = 'none';
-    letter.style.display = 'block';
+btn.addEventListener('click', async () => {
+  btn.style.display = 'none';
+  letter.style.display = 'block';
+  startHearts();
+  startFireworks();
+  try {
+    music.muted = false;
+    await music.play();
+  } catch (err) {
+    console.log('⚠️ Nhấn mới phát nhạc:', err);
+  }
+});
 
-    try {
-      await music.play();
-    } catch (err) {
-      const notice = document.createElement('div');
-      notice.textContent = "🎵 Nhấn vào đây để bật nhạc";
-      notice.style.position = "absolute";
-      notice.style.bottom = "20px";
-      notice.style.left = "50%";
-      notice.style.transform = "translateX(-50%)";
-      notice.style.background = "#fff8";
-      notice.style.padding = "10px 20px";
-      notice.style.borderRadius = "20px";
-      notice.style.cursor = "pointer";
-      notice.style.color = "#e75480";
-      notice.style.fontSize = "18px";
-      notice.style.backdropFilter = "blur(5px)";
-      document.body.appendChild(notice);
-      notice.addEventListener("click", async () => {
-        await music.play();
-        notice.remove();
-      });
-    }
-  });
+function startHearts() {
+  setInterval(() => {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.background = `hsl(${Math.random()*360}, 70%, 80%)`;
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 4000);
+  }, 300);
+}
+
+function startFireworks() {
+  for (let i = 0; i < 20; i++) {
+    const s = document.createElement('div');
+    s.className = 'sparkle';
+    s.style.left = 50 + Math.random() * 50 + 'vw';
+    s.style.top = 50 + Math.random() * 20 + 'vh';
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 1000);
+  }
+}
 </script>
 </body>
 </html>

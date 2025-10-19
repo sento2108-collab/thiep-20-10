@@ -3,344 +3,259 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Chúc Vy 20/10 — Kaito Kid</title>
+<title>💌 Chúc Vy 20/10 — Kaito Kid 💐</title>
 <style>
-  :root{
-    --bg1: #fff0f4; /* pastel pink */
-    --bg2: #f7f2ff; /* pastel lilac */
-    --accent: #ff6fa3;
-    --muted: #6b5561;
-  }
-  html,body{height:100%;margin:0;font-family: "Poppins","Segoe UI",Arial, sans-serif; -webkit-font-smoothing:antialiased}
-  body{
-    background: radial-gradient(1200px 600px at 10% 20%, #fff3f8 0%, rgba(255,255,255,0) 25%),
-                linear-gradient(120deg,var(--bg1),var(--bg2));
-    overflow:hidden;
-    color:var(--muted);
-  }
+:root {
+  --bg1: #fff0f4;
+  --bg2: #f7f2ff;
+  --accent: #ff6fa3;
+  --muted: #6b5561;
+}
 
-  /* Container chính */
-  .stage{
-    position:relative;
-    width:100%;
-    height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:28px;
-    box-sizing:border-box;
-  }
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: "Poppins","Segoe UI",Arial,sans-serif;
+  background: linear-gradient(120deg, var(--bg1), var(--bg2));
+  color: var(--muted);
+  overflow: hidden;
+}
 
-  /* Card text bar bên trên (nút replay) */
-  .topbar{
-    position:absolute; top:18px; left:18px; right:18px;
-    display:flex; justify-content:space-between; align-items:center;
-    gap:12px;
-  }
-  .title{
-    font-size:28px; font-weight:700; color:#222;
-    text-shadow: 0 2px 0 rgba(255,255,255,0.65);
-    display:flex; align-items:center; gap:10px;
-  }
-  .title .flower { font-size:28px }
+/* Khung chính */
+.stage {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  box-sizing: border-box;
+}
 
-  .replay{
-    background:linear-gradient(180deg,#ffffff,#ffeef6);
-    border:1px solid rgba(0,0,0,0.06);
-    padding:8px 12px;border-radius:12px; cursor:pointer; font-weight:600;
-    box-shadow:0 6px 18px rgba(170,50,110,0.08);
-  }
+/* Thanh tiêu đề */
+.topbar {
+  position: absolute;
+  top: 18px; left: 18px; right: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  /* Kaito - hình nhân vật */
-  .kaito-wrap{
-    position:absolute;
-    left:8%;
-    bottom:6%;
-    width:360px;
-    height:auto;
-    pointer-events:none;
-    transform-origin:50% 100%;
-    will-change:transform,opacity;
-  }
-  #kaito {
-    width:100%;
-    height:auto;
-    display:block;
-    filter: drop-shadow(0 18px 28px rgba(130,45,80,0.18));
-    transform-origin:50% 100%;
-  }
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+  text-shadow: 0 2px 0 rgba(255,255,255,0.65);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.title .flower { font-size: 28px; }
 
-  /* animation Kaito vào, bước lên, cúnh mũ và bắn */
-  .kaito-wrap.enter{
-    animation: kaitoEnter 1.2s ease forwards;
-  }
-  .kaito-wrap.nudge{
-    animation: kaitoNudge 0.9s ease-in-out infinite alternate;
-  }
-  @keyframes kaitoEnter {
-    0% { transform: translateY(80vh) scale(.6) rotate(0deg); opacity:0; }
-    60% { transform: translateY(-8vh) scale(.98) rotate(-2deg); opacity:1; }
-    100% { transform: translateY(0) scale(1) rotate(0deg); opacity:1; }
-  }
-  @keyframes kaitoNudge {
-    0% { transform: translateY(0) rotate(0deg) }
-    100% { transform: translateY(-10px) rotate(-1.5deg) }
-  }
+.replay {
+  background: linear-gradient(180deg, #ffffff, #ffeef6);
+  border: 1px solid rgba(0,0,0,0.06);
+  padding: 8px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 6px 18px rgba(170,50,110,0.08);
+  transition: all 0.3s ease;
+}
+.replay:hover { background: #fff3fa; transform: translateY(-2px); }
 
-  /* Thiệp (khởi tạo ở bên Kaito) và bắn ra giữa */
+/* Hình Kaito */
+.kaito-wrap {
+  position: absolute;
+  left: 10%;
+  bottom: 10%;
+  width: 340px;
+  transform-origin: 50% 100%;
+}
+#kaito {
+  width: 100%;
+  filter: drop-shadow(0 18px 28px rgba(130,45,80,0.18));
+}
+
+/* Thiệp */
+.card {
+  position: absolute;
+  right: 10%;
+  top: 50%;
+  transform: translateY(-50%) scale(.8);
+  width: 340px;
+  height: 200px;
+  border-radius: 16px;
+  background: linear-gradient(135deg,#fff7fb,#ffeef6);
+  box-shadow: 0 20px 60px rgba(200,60,110,0.12);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  animation: fadeIn 1.6s ease forwards 1.6s;
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #ff2f7f;
+  font-weight: 800;
+  text-shadow: 0 6px 22px rgba(255,101,152,0.12);
+}
+.card p {
+  margin: 10px 0 0;
+  color: #6c5860;
+  line-height: 1.35;
+  font-size: 14px;
+  padding: 0 10px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-50%) scale(.7); }
+  to { opacity: 1; transform: translateY(-50%) scale(1); }
+}
+
+/* Glow */
+.glow {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 480px; height: 480px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,150,170,0.18), transparent 70%);
+  filter: blur(30px);
+  transform: translate(-50%, -50%) scale(0.8);
+  opacity: 0;
+  animation: glowIn 1.2s ease forwards 1.8s;
+}
+@keyframes glowIn {
+  from { opacity: 0; transform: translate(-50%,-50%) scale(.5); }
+  to { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+}
+
+/* Bồ câu bay */
+.dove {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: url('https://upload.wikimedia.org/wikipedia/commons/0/04/Dove_emoji.png') no-repeat center/contain;
+  opacity: 0.85;
+  animation: fly 12s linear infinite;
+}
+@keyframes fly {
+  0% { transform: translate(-10vw, 20vh) scale(0.9) rotate(5deg); opacity: 0.8; }
+  25% { transform: translate(40vw, 5vh) scale(1) rotate(-5deg); }
+  50% { transform: translate(80vw, 25vh) scale(1.1) rotate(5deg); }
+  75% { transform: translate(50vw, 70vh) scale(1) rotate(-3deg); }
+  100% { transform: translate(-10vw, 20vh) scale(0.9) rotate(5deg); opacity: 0.8; }
+}
+.dove:nth-child(2) { animation-delay: 3s; animation-duration: 14s; transform: scale(0.8); }
+.dove:nth-child(3) { animation-delay: 6s; animation-duration: 16s; transform: scale(1.2); }
+
+/* QR Code */
+.qr {
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 13px;
+  color: #7a5b6a;
+}
+.qr img {
+  width: 90px;
+  height: 90px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  margin-bottom: 6px;
+}
+
+/* Gợi ý */
+.hint {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  font-size: 13px;
+  color: #7a5b6a;
+  background: rgba(255,255,255,0.6);
+  padding: 8px 12px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+}
+
+/* Responsive */
+@media (max-width: 720px) {
+  .kaito-wrap {
+    position: relative;
+    left: 0;
+    bottom: auto;
+    width: 70%;
+    margin-bottom: 40px;
+  }
   .card {
-    position:absolute;
-    width:320px;
-    max-width:90vw;
-    height:190px;
-    left: calc(8% + 360px); /* bắt đầu gần Kaito */
-    bottom: 22%;
-    transform-origin:center;
-    border-radius:14px;
-    background: linear-gradient(135deg,#fff7fb,#ffeef6);
-    box-shadow: 0 30px 60px rgba(200,60,110,0.12), 0 6px 20px rgba(0,0,0,0.06);
-    padding:18px;
-    display:flex; flex-direction:column; justify-content:center; align-items:center;
-    text-align:center;
-    opacity:0;
-    transform: translateY(0) scale(.6) rotate(-8deg);
-    will-change: transform, opacity;
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    width: 90%;
+    margin-top: 20px;
   }
-
-  .card.show {
-    animation: cardFly 1.1s cubic-bezier(.12,.9,.3,1.05) forwards;
+  .stage {
+    flex-direction: column;
+    justify-content: center;
   }
-  @keyframes cardFly {
-    0% { opacity:1; transform: translateY(0) scale(.6) rotate(-8deg); left: calc(8% + 360px); bottom:22% }
-    40% { transform: translateY(-30vh) scale(1.05) rotate(8deg); left:50%; }
-    100% { opacity:1; transform: translate(-50%,-50%) scale(1) rotate(0deg); left:50%; bottom:50%;}
-  }
-
-  /* Nội dung thiệp */
-  .card h2{
-    margin:0; font-size:20px; color: #ff2f7f; font-weight:800;
-    text-shadow:0 6px 22px rgba(255,101,152,0.12);
-  }
-  .card p{ margin:8px 0 0; color:#6c5860; line-height:1.35; font-size:14px; padding:0 8px }
-
-  /* Glow vòng sáng quanh thiệp */
-  .glow {
-    position:absolute; width:420px; height:420px; border-radius:50%;
-    left:50%; top:50%; transform:translate(-50%,-50%) scale(.4);
-    pointer-events:none; z-index:-1; opacity:0;
-    background: radial-gradient(circle at 30% 40%, rgba(255,150,170,0.18), transparent 25%),
-                radial-gradient(circle at 70% 60%, rgba(250,200,220,0.12), transparent 30%);
-    filter: blur(26px);
-  }
-  .glow.show { animation: glowIn 0.9s ease forwards; }
-  @keyframes glowIn { from{opacity:0; transform:translate(-50%,-50%) scale(.2)} to{opacity:1; transform:translate(-50%,-50%) scale(1)}}
-
-  /* Sparkles (kim tuyến) */
-  .sparkle {
-    position:absolute; width:8px; height:8px; border-radius:50%;
-    background: radial-gradient(circle, #fff 0%, #ffd1e6 45%, transparent 70%);
-    box-shadow:0 0 10px rgba(255,200,230,0.9);
-    pointer-events:none;
-    transform:translate(-50%,-50%) scale(.6);
-  }
-
-  /* Petal / flower emoji */
-  .petal{
-    position:absolute; font-size:26px; pointer-events:none; will-change:transform,opacity;
-    transform-origin:center;
-    text-shadow:0 2px 6px rgba(0,0,0,0.12);
-  }
-
-  /* Confetti */
-  .confetti {
-    position:absolute; width:10px; height:14px; opacity:0.95; border-radius:2px;
-    pointer-events:none; transform-origin:center;
-  }
-
-  /* Replay tip */
-  .hint {
-    position:absolute; right:18px; bottom:18px; font-size:13px; color:#7a5b6a;
-    background: rgba(255,255,255,0.6); padding:8px 12px; border-radius:12px;
-    box-shadow:0 6px 18px rgba(0,0,0,0.05);
-  }
-
-  /* Responsive */
-  @media (max-width:720px){
-    .kaito-wrap{ left:4%; width:260px }
-    .card{ width:86vw; left: 20%; bottom: 16% }
-  }
+  .qr img { width: 70px; height: 70px; }
+}
 </style>
 </head>
 <body>
-  <div class="stage" id="stage">
+  <div class="stage">
     <div class="topbar">
       <div class="title">💌 <strong>Chúc Vy 20/10</strong> <span class="flower">🌷</span></div>
-      <div style="display:flex;gap:10px;align-items:center">
-        <button class="replay" id="replayBtn">🔁 Xem lại</button>
-      </div>
+      <button class="replay" id="replayBtn">🔁 Xem lại</button>
     </div>
 
-    <!-- Kaito (bạn phải upload file 'kaito.png' vào cùng thư mục với index.html) -->
-    <div class="kaito-wrap" id="kaitoWrap">
+    <!-- Bồ câu -->
+    <div class="dove"></div>
+    <div class="dove"></div>
+    <div class="dove"></div>
+
+    <div class="kaito-wrap">
       <img id="kaito" src="kaito.png" alt="Kaito Kid">
     </div>
 
-    <!-- Tấm thiệp (bắn ra) -->
     <div class="card" id="card">
       <h2>💐 Chúc mừng ngày 20/10</h2>
       <p>Chúc Vy luôn vui vẻ, xinh đẹp và rạng rỡ như đóa hoa 🌸</p>
     </div>
 
-    <!-- glow background -->
     <div class="glow" id="glow"></div>
+
+    <!-- QR Code -->
+    <div class="qr">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://sento2108-collab.github.io" alt="QR code">
+      <div>Quét để xem trang 💖</div>
+    </div>
 
     <div class="hint">Không có nhạc • Nhấn "Xem lại" để phát lại animation</div>
   </div>
 
 <script>
-  // =============== CÁC HÀM HIỆU ỨNG ===============
-  const kaitoWrap = document.getElementById('kaitoWrap');
   const card = document.getElementById('card');
   const glow = document.getElementById('glow');
-  const stage = document.getElementById('stage');
   const replayBtn = document.getElementById('replayBtn');
 
-  function clearParticles(){
-    document.querySelectorAll('.petal, .sparkle, .confetti').forEach(n=>n.remove());
+  function replayAnimation() {
+    card.style.animation = 'none';
+    glow.style.animation = 'none';
+    void card.offsetWidth; // reset
+    card.style.animation = 'fadeIn 1.6s ease forwards 1.6s';
+    glow.style.animation = 'glowIn 1.2s ease forwards 1.8s';
   }
 
-  function spawnSparkles(centerX, centerY, count=12){
-    for(let i=0;i<count;i++){
-      const s = document.createElement('div');
-      s.className='sparkle';
-      const angle = Math.random()*Math.PI*2;
-      const r = 20 + Math.random()*140;
-      s.style.left = (centerX + Math.cos(angle)*10) + 'px';
-      s.style.top = (centerY + Math.sin(angle)*10) + 'px';
-      s.style.opacity = 0;
-      stage.appendChild(s);
-      const dx = (Math.random()-0.5)*200;
-      const dy = - (50 + Math.random()*220);
-      s.animate([
-        { transform:'translate(0,0) scale(.6)', opacity:0 },
-        { transform:`translate(${dx}px, ${dy}px) scale(1.1)`, opacity:1 },
-        { transform:`translate(${dx*1.2}px, ${dy*1.5}px) scale(.4)`, opacity:0 }
-      ], { duration: 900 + Math.random()*600, easing:'cubic-bezier(.2,.9,.2,1)' });
-      setTimeout(()=>s.remove(), 1600);
-    }
-  }
-
-  function spawnPetals(centerX, centerY, count=14){
-    const emojis = ['🌸','🌺','🌷','💮'];
-    for(let i=0;i<count;i++){
-      const p = document.createElement('div');
-      p.className='petal';
-      p.textContent = emojis[Math.floor(Math.random()*emojis.length)];
-      const left = centerX + (Math.random()-0.5)*80;
-      const top = centerY + (Math.random()-0.5)*40;
-      p.style.left = left + 'px';
-      p.style.top = top + 'px';
-      p.style.opacity = 0;
-      stage.appendChild(p);
-      const dx = (Math.random()-0.5)*600;
-      const rotate = (Math.random()-0.5)*720;
-      const dur = 2500 + Math.random()*2500;
-      p.animate([
-        { transform:'translateY(0) rotate(0deg) scale(.9)', opacity:0 },
-        { transform:`translate(${dx}px, ${600 + Math.random()*200}px) rotate(${rotate}deg) scale(1)`, opacity:1 },
-        { transform:`translate(${dx*1.2}px, ${900 + Math.random()*300}px) rotate(${rotate*1.5}deg) scale(.6)`, opacity:0 }
-      ], { duration: dur, easing: 'cubic-bezier(.2,.8,.2,1)'});
-      setTimeout(()=>p.remove(), dur+80);
-    }
-  }
-
-  function spawnConfetti(centerX, centerY, count=28){
-    const colors = ['#FF6FA3','#FFD166','#B28CFF','#FFA7C4','#FFBFDA'];
-    for(let i=0;i<count;i++){
-      const c = document.createElement('div');
-      c.className = 'confetti';
-      c.style.background = colors[Math.floor(Math.random()*colors.length)];
-      c.style.left = (centerX + (Math.random()-0.5)*60) + 'px';
-      c.style.top = (centerY + (Math.random()-0.5)*20) + 'px';
-      c.style.opacity = (0.7 + Math.random()*0.3);
-      c.style.transform = `rotate(${Math.random()*360}deg)`;
-      stage.appendChild(c);
-      const dx = (Math.random()-0.5)*1000;
-      const dy = 200 + Math.random()*600;
-      const rot = (Math.random()-0.5)*1080;
-      const dur = 1200 + Math.random()*1400;
-      c.animate([
-        { transform:`translate(0,0) rotate(0deg)`, opacity:1 },
-        { transform:`translate(${dx}px, ${dy}px) rotate(${rot}deg)`, opacity:0.9 }
-      ], { duration: dur, easing:'cubic-bezier(.2,.9,.2,1)'});
-      setTimeout(()=>c.remove(), dur+40);
-    }
-  }
-
-  // Lấy toạ độ trung tâm phần tử
-  function centerOf(el){
-    const r = el.getBoundingClientRect();
-    return { x: r.left + r.width/2, y: r.top + r.height/2 };
-  }
-
-  // PLAY ANIMATION
-  function play(){
-    clearParticles();
-    // reset states
-    kaitoWrap.classList.remove('enter','nudge');
-    card.classList.remove('show');
-    glow.classList.remove('show');
-
-    // initial show kaito
-    setTimeout(()=>{
-      kaitoWrap.classList.add('enter');
-      // sau khi Kaito vừa vào, bắt đầu nudge (lơ lửng)
-      setTimeout(()=> kaitoWrap.classList.add('nudge'), 1400);
-    }, 80);
-
-    // Tạo thiệp bay ra (từ Kaito)
-    setTimeout(()=>{
-      // show tiny opacity while starting
-      card.style.opacity = 1;
-      card.classList.add('show');
-
-      // Glow lớn xuất hiện
-      setTimeout(()=> glow.classList.add('show'), 220);
-
-      // spawn sparkle + petals + confetti từ vị trí trung tâm thiệp
-      const cpos = centerOf(card);
-      spawnSparkles(cpos.x, cpos.y, 18);
-      spawnPetals(cpos.x, cpos.y, 20);
-      spawnConfetti(cpos.x, cpos.y, 28);
-
-      // tiếp tục lọc petal rải nhẹ
-      setTimeout(()=> spawnPetals(cpos.x, cpos.y, 12), 500);
-      setTimeout(()=> spawnConfetti(cpos.x, cpos.y, 18), 700);
-      setTimeout(()=> spawnSparkles(cpos.x, cpos.y, 10), 900);
-    }, 1600); // thời gian để Kaito xuất hiện trước
-  }
-
-  // Khởi chạy lần đầu
-  window.addEventListener('load', ()=>{
-    setTimeout(play, 200);
-  });
-
-  // nút replay
-  replayBtn.addEventListener('click', ()=>{
-    // tạm ngắt nudge để reset
-    kaitoWrap.classList.remove('nudge');
-    requestAnimationFrame(()=>{
-      // reset transform bằng remove/forceReflow
-      kaitoWrap.classList.remove('enter');
-      card.classList.remove('show');
-      glow.classList.remove('show');
-      clearParticles();
-      setTimeout(()=> play(), 160);
-    });
-  });
-
-  // Khi người resize: xóa particles cũ để tránh rơi sai vị trí
-  window.addEventListener('resize', ()=> clearParticles());
+  replayBtn.addEventListener('click', replayAnimation);
 </script>
 </body>
 </html>

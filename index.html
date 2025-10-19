@@ -1,198 +1,159 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>💌 Chúc Vy 20/10 💖</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      overflow: hidden;
-      font-family: 'Dancing Script', cursive;
-      background: linear-gradient(to bottom, #ffe5ec, #fff6f9);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      position: relative;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💌 Chúc Vy 20/10 💖</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(to bottom, #fbe9e7, #fce4ec);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Times New Roman', serif;
+    overflow: hidden;
+  }
 
-    /* Mặt trời */
-    .sun {
-      position: absolute;
-      top: 60px;
-      right: 80px;
-      width: 100px;
-      height: 100px;
-      background: radial-gradient(circle, #ffd966, #ffbf00);
-      border-radius: 50%;
-      box-shadow: 0 0 60px #ffd966;
-      animation: pulse 4s infinite ease-in-out;
-    }
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.05); opacity: 0.8; }
-    }
+  .sun {
+    position: absolute;
+    top: 50px;
+    right: 100px;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, #ffeb3b, #fbc02d);
+    border-radius: 50%;
+    animation: glow 4s infinite alternate;
+  }
 
-    /* Mây */
-    .cloud {
-      position: absolute;
-      background: #fff;
-      border-radius: 50px;
-      width: 120px; height: 60px;
-      top: 100px;
-      animation: moveCloud 60s linear infinite;
-    }
-    .cloud::before, .cloud::after {
-      content: '';
-      position: absolute;
-      background: #fff;
-      border-radius: 50px;
-    }
-    .cloud::before { width: 60px; height: 60px; top: -20px; left: 10px; }
-    .cloud::after { width: 80px; height: 80px; top: -30px; right: 10px; }
+  @keyframes glow {
+    from { opacity: 0.8; transform: scale(1); }
+    to { opacity: 1; transform: scale(1.1); }
+  }
 
-    @keyframes moveCloud {
-      0% { left: -200px; }
-      100% { left: 110%; }
-    }
+  .cloud {
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    opacity: 0.9;
+    animation: float 15s linear infinite;
+  }
 
-    /* Cây */
-    .tree {
-      position: absolute;
-      bottom: 0;
-      width: 40px;
-      height: 100px;
-      background: #7a5230;
-      border-radius: 10px;
-      transform-origin: bottom center;
-      animation: sway 3s ease-in-out infinite;
-    }
-    .tree::before {
-      content: '';
-      position: absolute;
-      bottom: 80px;
-      left: -30px;
-      width: 100px;
-      height: 60px;
-      background: radial-gradient(circle at center, #67b26f, #4ca2cd);
-      border-radius: 50%;
-    }
-    @keyframes sway {
-      0%, 100% { transform: rotate(0deg); }
-      50% { transform: rotate(3deg); }
-    }
+  .cloud::before, .cloud::after {
+    content: '';
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+  }
 
-    /* Kaito Kid */
-    .kaito {
-      position: absolute;
-      bottom: 0;
-      left: 50px;
-      width: 200px;
-      height: auto;
-      opacity: 0.8;
-    }
+  .cloud.small {
+    width: 70px;
+    height: 40px;
+    top: 100px;
+    left: -150px;
+    animation-delay: 3s;
+  }
 
-    /* Bồ câu */
-    .dove {
-      position: absolute;
-      background: white;
-      width: 25px; height: 20px;
-      border-radius: 50% 50% 50% 0;
-      transform: rotate(-45deg);
-      animation: fly 15s linear infinite;
-    }
-    .dove::after {
-      content: '';
-      position: absolute;
-      width: 15px; height: 10px;
-      background: white;
-      top: -5px; left: 15px;
-      border-radius: 50%;
-    }
-    @keyframes fly {
-      0% { top: 60%; left: -50px; transform: scale(0.8) rotate(-45deg); }
-      50% { top: 30%; left: 50%; transform: scale(1.2) rotate(0deg); }
-      100% { top: 50%; left: 110%; transform: scale(0.8) rotate(45deg); }
-    }
+  .cloud.small::before { width: 40px; height: 40px; left: -20px; top: 0; }
+  .cloud.small::after { width: 40px; height: 40px; left: 40px; top: 0; }
 
-    /* Nút chính giữa */
-    .main-btn {
-      background: #fff;
-      border-radius: 20px;
-      padding: 20px 40px;
-      font-size: 32px;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      color: #e75480;
-      transition: 0.3s;
-    }
-    .main-btn:hover {
-      transform: scale(1.05);
-      background: #ffe4ec;
-    }
+  .cloud.large {
+    width: 120px;
+    height: 60px;
+    top: 200px;
+    left: -200px;
+  }
 
-    /* Thiệp */
-    .card {
-      display: none;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0.8);
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 0 30px rgba(0,0,0,0.2);
-      padding: 40px;
-      text-align: center;
-      max-width: 500px;
-      font-size: 22px;
-      opacity: 0;
-      transition: 0.6s ease;
-    }
-    .card.show {
-      display: block;
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
-    }
-  </style>
+  .cloud.large::before { width: 60px; height: 60px; left: -30px; top: 0; }
+  .cloud.large::after { width: 60px; height: 60px; left: 70px; top: 0; }
+
+  @keyframes float {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(120vw); }
+  }
+
+  .tree {
+    position: absolute;
+    bottom: 0;
+    width: 40px;
+    height: 80px;
+    background: #795548;
+    border-radius: 10px;
+  }
+
+  .tree::before {
+    content: '';
+    position: absolute;
+    bottom: 60px;
+    left: -20px;
+    width: 80px;
+    height: 60px;
+    background: radial-gradient(circle, #66bb6a, #388e3c);
+    border-radius: 50%;
+  }
+
+  .tree.left { left: 80px; }
+  .tree.right { right: 80px; }
+
+  .card {
+    background: white;
+    padding: 20px 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    text-align: center;
+    font-size: 24px;
+    color: #e75480;
+    cursor: pointer;
+    transition: all 0.5s;
+  }
+
+  .card:hover {
+    transform: scale(1.05);
+  }
+
+  .letter {
+    display: none;
+    background: #fff0f5;
+    border-radius: 15px;
+    padding: 25px;
+    font-size: 20px;
+    text-align: center;
+    color: #ad1457;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    animation: fadeIn 1s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
 </head>
 <body>
   <div class="sun"></div>
-  <div class="cloud" style="animation-delay: 0s;"></div>
-  <div class="cloud" style="top:150px; animation-delay: 20s; transform: scale(0.8);"></div>
-  <div class="tree" style="left:100px;"></div>
-  <div class="tree" style="right:100px;"></div>
-  <div class="dove" style="animation-delay:0s;"></div>
-  <div class="dove" style="animation-delay:5s; animation-duration:18s;"></div>
-  <div class="dove" style="animation-delay:8s; animation-duration:20s;"></div>
+  <div class="cloud small"></div>
+  <div class="cloud large"></div>
+  <div class="tree left"></div>
+  <div class="tree right"></div>
 
-  <!-- ảnh Kaito Kid (bạn có thể thay link nếu muốn ảnh khác) -->
-  <img class="kaito" src="https://i.ibb.co/GscWzCP/kaito.png" alt="Kaito Kid" />
-
-  <div class="main-btn" id="openCard">💌 Chúc Vy 20/10 vui vẻ 💖</div>
-
-  <div class="card" id="card">
-    <h2>💌 Thư chúc mừng</h2>
-    <p>Chúc Vy luôn xinh đẹp, hạnh phúc và được yêu thương như một nàng công chúa 🌸</p>
-  </div>
+  <div class="card" id="openCard">💌 Chúc Vy 20/10 vui vẻ 💖</div>
+  <div class="letter" id="letter">Chúc Vy luôn xinh đẹp, hạnh phúc và được yêu thương như một nàng công chúa 🌸</div>
 
   <audio id="music" src="SongGio.mp3"></audio>
 
-  <script>
+<script>
   const btn = document.getElementById('openCard');
-  const card = document.getElementById('card');
+  const letter = document.getElementById('letter');
   const music = document.getElementById('music');
 
-  // Khi người dùng nhấn mở thiệp
   btn.addEventListener('click', async () => {
-    card.classList.add('show');
     btn.style.display = 'none';
-    
+    letter.style.display = 'block';
+
     try {
       await music.play();
     } catch (err) {
-      // Nếu bị chặn, hiển thị nút phụ
       const notice = document.createElement('div');
       notice.textContent = "🎵 Nhấn vào đây để bật nhạc";
       notice.style.position = "absolute";
@@ -207,7 +168,6 @@
       notice.style.fontSize = "18px";
       notice.style.backdropFilter = "blur(5px)";
       document.body.appendChild(notice);
-      
       notice.addEventListener("click", async () => {
         await music.play();
         notice.remove();

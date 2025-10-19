@@ -2,107 +2,104 @@
 <html lang="vi">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Chúc Vy 20/10 💖</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Chúc Vy 20/10 — Kaito Kid</title>
 <style>
   :root{
-    --bg1: #fff5fa;
-    --bg2: #f7f3ff;
-    --text: #4a3b46;
-    --accent: #ff7bab;
+    --bg1:#fff5fa;
+    --bg2:#fff0f6;
+    --text:#47343b;
+    --accent:#ff6fa3;
+    --card:#fff7fb;
   }
-
-  html, body {
-    height: 100%;
-    margin: 0;
-    font-family: "Poppins", "Segoe UI", sans-serif;
-    background: linear-gradient(120deg, var(--bg1), var(--bg2));
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  h1 {
-    position: relative;
-    font-size: 36px;
-    text-align: center;
-    color: var(--text);
-    font-weight: 700;
-    text-shadow: 0 3px 10px rgba(255, 180, 200, 0.6);
-  }
-
-  .dove {
-    position: absolute;
-    font-size: 32px;
-    animation: fly 8s linear infinite;
-    opacity: 0.9;
-  }
-
-  @keyframes fly {
-    0% {
-      transform: translateX(-10vw) translateY(0) rotate(0deg);
-    }
-    25% {
-      transform: translateX(25vw) translateY(-10vh) rotate(10deg);
-    }
-    50% {
-      transform: translateX(50vw) translateY(10vh) rotate(-10deg);
-    }
-    75% {
-      transform: translateX(75vw) translateY(-5vh) rotate(5deg);
-    }
-    100% {
-      transform: translateX(110vw) translateY(0) rotate(0deg);
-    }
-  }
-
-  .dove:nth-child(2) { animation-delay: 2s; font-size: 28px; top: 20%; }
-  .dove:nth-child(3) { animation-delay: 4s; font-size: 36px; top: 40%; }
-  .dove:nth-child(4) { animation-delay: 6s; font-size: 30px; top: 60%; }
-
-  .glow {
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(255,192,203,0.25) 0%, transparent 70%);
-    filter: blur(20px);
-    z-index: -1;
-  }
-
-  /* Ẩn thanh điều khiển audio */
-  audio {
-    display: none;
-  }
+  html,body{height:100%;margin:0;font-family:"Poppins","Segoe UI",sans-serif;background:linear-gradient(135deg,var(--bg1),var(--bg2));display:flex;align-items:center;justify-content:center;overflow:hidden;color:var(--text)}
+  .stage{position:relative;width:100%;height:100vh;display:flex;align-items:center;justify-content:center;padding:28px;box-sizing:border-box}
+  .kaito-wrap{position:absolute;left:6%;bottom:6%;width:320px;pointer-events:none;transform-origin:50% 100%}
+  #kaito{width:100%;filter:drop-shadow(0 18px 30px rgba(140,55,90,0.12));opacity:0.98;}
+  .card{width:380px;height:220px;border-radius:18px;background:linear-gradient(180deg,var(--card),#ffeef6);box-shadow:0 24px 60px rgba(200,60,110,0.10);display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;transition:transform .45s,box-shadow .25s;}
+  .card:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 40px 100px rgba(200,60,110,0.12);}
+  .title{text-align:center;padding:12px 18px;}
+  .title h2{margin:0;font-size:24px;font-weight:700;color:var(--accent);}
+  .title p{margin:8px 0 0;color:#6b5159;font-size:14px;}
+  .center-glow{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:560px;height:560px;border-radius:50%;background:radial-gradient(circle at 40% 40%,rgba(255,150,170,0.12),rgba(255,220,235,0.04) 40%,transparent 60%);filter:blur(30px);}
+  .dove{position:absolute;width:48px;height:48px;pointer-events:none;opacity:0.92;}
+  .dove>span{display:block;font-size:32px;filter:drop-shadow(0 6px 10px rgba(0,0,0,0.06));}
+  @keyframes wing{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+  .dove.wiggle{animation:wing 900ms ease-in-out infinite;}
+  .overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(8,6,10,0.24);opacity:0;pointer-events:none;transition:opacity .28s;z-index:50;}
+  .overlay.show{opacity:1;pointer-events:auto;}
+  .letter{width:560px;max-width:92vw;background:linear-gradient(180deg,#fff,#fff7fb);border-radius:14px;box-shadow:0 30px 80px rgba(80,30,50,0.18);padding:26px;transform:translateY(20px) scale(.98);transition:transform .36s,opacity .28s;opacity:0;position:relative;}
+  .overlay.show .letter{transform:translateY(0) scale(1);opacity:1;}
+  .close{position:absolute;right:14px;top:12px;background:transparent;border:0;font-size:18px;cursor:pointer;color:#8a6a74;}
+  .letter h3{margin:10px 0 6px;font-size:20px;color:var(--accent);text-align:center;font-weight:800;}
+  .letter p{margin:8px 0;color:#6b5159;line-height:1.6;font-size:15px;text-align:center;}
+  .controls{display:flex;gap:10px;justify-content:center;margin-top:12px;}
+  .btn{background:linear-gradient(180deg,#fff,#ffecf5);border:1px solid rgba(0,0,0,0.06);padding:8px 12px;border-radius:10px;cursor:pointer;font-weight:700;box-shadow:0 8px 22px rgba(190,90,120,0.06);}
+  @media(max-width:720px){.kaito-wrap{left:4%;bottom:4%;width:220px}.card{width:88%;height:180px}.letter{width:92%;padding:18px}}
 </style>
 </head>
 <body>
+  <div class="stage">
+    <div class="center-glow"></div>
+    <div class="kaito-wrap"><img id="kaito" src="kaito.png" alt="Kaito Kid"></div>
+    <div class="card" id="card">
+      <div class="title">
+        <h2>Chúc Vy 20/10 vui vẻ 💖</h2>
+        <p>Nhấn để mở thiệp</p>
+      </div>
+    </div>
+    <div class="dove" id="d1"><span>🕊️</span></div>
+    <div class="dove" id="d2"><span>🕊️</span></div>
+    <div class="dove" id="d3"><span>🕊️</span></div>
+  </div>
 
-  <div class="glow"></div>
+  <div class="overlay" id="overlay">
+    <div class="letter">
+      <button class="close" id="closeBtn">✕</button>
+      <h3>💌 Thư chúc mừng</h3>
+      <p>Chúc Vy luôn xinh đẹp, hạnh phúc và được yêu thương như một nàng công chúa 🌸</p>
+      <div class="controls">
+        <button class="btn" id="playAgainBtn">Phát lại nhạc & hiệu ứng</button>
+        <button class="btn" id="pauseBtn">Tắt nhạc</button>
+      </div>
+    </div>
+  </div>
 
-  <h1>💐 Chúc Vy 20/10 vui vẻ 💖</h1>
-
-  <div class="dove">🕊️</div>
-  <div class="dove">🕊️</div>
-  <div class="dove">🕊️</div>
-  <div class="dove">🕊️</div>
-
-  <!-- Nhạc tự động phát -->
-  <audio id="bgm" autoplay loop>
+  <audio id="bgm" preload="auto" loop>
     <source src="Sóng Gió.mp3" type="audio/mpeg">
   </audio>
 
-  <script>
-    // Một số trình duyệt chặn autoplay — ta thử play lại sau khi load
-    window.addEventListener('load', () => {
-      const bgm = document.getElementById('bgm');
-      const playPromise = bgm.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          document.body.addEventListener('click', () => bgm.play(), { once: true });
-        });
-      }
-    });
-  </script>
+<script>
+const card=document.getElementById("card");
+const overlay=document.getElementById("overlay");
+const closeBtn=document.getElementById("closeBtn");
+const playAgainBtn=document.getElementById("playAgainBtn");
+const pauseBtn=document.getElementById("pauseBtn");
+const bgm=document.getElementById("bgm");
+
+card.addEventListener("click",async()=>{
+  overlay.classList.add("show");
+  try{await bgm.play();}catch(e){console.warn(e);}
+});
+closeBtn.onclick=()=>{overlay.classList.remove("show");bgm.pause();bgm.currentTime=0;}
+playAgainBtn.onclick=()=>{bgm.play();}
+pauseBtn.onclick=()=>{bgm.pause();}
+
+function moveDove(el,offset,speed){
+  const cardRect=card.getBoundingClientRect();
+  let start=performance.now();
+  function anim(t){
+    const a=(t-start)*speed+offset;
+    const x=window.innerWidth/2+Math.cos(a)*220-el.offsetWidth/2;
+    const y=window.innerHeight/2+Math.sin(a)*120-el.offsetHeight/2;
+    el.style.transform=`translate(${x}px,${y}px)`;
+    requestAnimationFrame(anim);
+  }
+  requestAnimationFrame(anim);
+}
+moveDove(document.getElementById("d1"),0,0.001);
+moveDove(document.getElementById("d2"),2,0.0009);
+moveDove(document.getElementById("d3"),4,0.0011);
+</script>
 </body>
 </html>

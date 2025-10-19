@@ -3,133 +3,98 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thiệp 20/10 từ Kaito Kid 💌</title>
+<title>Thiệp 20/10 - Kaito Kid</title>
 <style>
   body {
-    margin: 0;
+    background: radial-gradient(circle, #ffe6f0, #ffd1e8);
     height: 100vh;
-    background: radial-gradient(circle at bottom, #021027, #000);
     overflow: hidden;
-    color: white;
-    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
   }
-
-  /* Ngôi sao lấp lánh */
-  .stars {
+  .kid {
     position: absolute;
-    width: 2px;
-    height: 2px;
-    background: white;
-    animation: twinkle 2s infinite;
-  }
-  @keyframes twinkle {
-    0%,100% { opacity: 0.2; }
-    50% { opacity: 1; }
-  }
-
-  /* Kaito Kid */
-  .kaito {
-    position: absolute;
-    bottom: -300px;
+    bottom: 0;
     left: 50%;
-    transform: translateX(-50%);
-    width: 180px;
+    transform: translateX(-50%) scale(0.8);
     opacity: 0;
-    animation: appear 8s ease-in-out forwards;
+    transition: all 2s ease;
   }
-
-  @keyframes appear {
-    0% { opacity: 0; bottom: -300px; }
-    40% { opacity: 1; bottom: 200px; }
-    70% { bottom: 230px; }
-    100% { bottom: 200px; }
+  .kid.show {
+    opacity: 1;
+    bottom: 20%;
   }
-
-  /* Thiệp */
   .card {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    width: 320px;
-    height: 200px;
+    width: 280px;
+    height: 180px;
     background: white;
-    color: #ff4081;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.4);
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    transition: all 1s ease;
     text-align: center;
-    border-radius: 16px;
-    box-shadow: 0 0 20px #ff80ab;
     padding: 20px;
-    animation: cardAppear 2s ease-out 6s forwards;
   }
-
-  @keyframes cardAppear {
-    from { transform: translate(-50%, -50%) scale(0); opacity: 0; }
-    to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  .card.show {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
   }
-
-  .message {
-    font-size: 22px;
-    margin-top: 30px;
+  h1 {
+    color: #e91e63;
   }
-
-  /* Tim rơi */
-  .heart {
-    position: fixed;
-    color: #ff80ab;
-    font-size: 20px;
+  p {
+    color: #555;
+  }
+  .heart, .flower {
+    position: absolute;
+    width: 40px;
+    opacity: 0.7;
     animation: fall 6s linear infinite;
   }
   @keyframes fall {
-    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
-  }
-
-  audio {
-    display: none;
+    0% { transform: translateY(-10%) scale(0.5); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(110vh) scale(1.2); opacity: 0; }
   }
 </style>
 </head>
 <body>
+  <img src="kaito.png" class="kid" id="kid">
+  <div class="card" id="card">
+    <h1>💌 Chúc mừng 20/10 💐</h1>
+    <p>Chúc bạn luôn vui vẻ, xinh đẹp và hạnh phúc! 🌸<br>
+    Kaito Kid gửi tặng bạn tấm thiệp này 🎩💖</p>
+  </div>
 
-<!-- Hiệu ứng sao -->
 <script>
-for(let i=0;i<60;i++){
-  let s=document.createElement('div');
-  s.className='stars';
-  s.style.top=Math.random()*100+'%';
-  s.style.left=Math.random()*100+'%';
-  s.style.animationDelay=Math.random()*2+'s';
-  document.body.appendChild(s);
-}
+  const kid = document.getElementById('kid');
+  const card = document.getElementById('card');
+
+  // xuất hiện Kaito Kid từ từ
+  setTimeout(() => kid.classList.add('show'), 1000);
+
+  // bắn ra tấm thiệp
+  setTimeout(() => card.classList.add('show'), 3000);
+
+  // tạo hiệu ứng rơi
+  function createFallingItem(imgSrc) {
+    const img = document.createElement('img');
+    img.src = imgSrc;
+    img.classList.add(Math.random() > 0.5 ? 'heart' : 'flower');
+    img.style.left = Math.random() * 100 + '%';
+    img.style.animationDelay = Math.random() * 5 + 's';
+    document.body.appendChild(img);
+    setTimeout(() => img.remove(), 7000);
+  }
+
+  setInterval(() => {
+    createFallingItem('heart.png');
+    createFallingItem('flower.png');
+  }, 800);
 </script>
-
-<!-- Kaito Kid -->
-<img src="https://i.imgur.com/vVPLmHo.png" alt="Kaito Kid" class="kaito">
-
-<!-- Thiệp -->
-<div class="card">
-  <h2>💐 Chúc mừng ngày Phụ nữ Việt Nam 20/10 💐</h2>
-  <p class="message">Kaito Kid gửi tới bạn lời chúc ngọt ngào, xinh đẹp và hạnh phúc! 💖</p>
-</div>
-
-<!-- Nhạc nền -->
-<audio autoplay loop>
-  <source src="https://cdn.pixabay.com/download/audio/2023/06/09/audio_2df04de0b2.mp3?filename=sweet-night-14695.mp3" type="audio/mpeg">
-</audio>
-
-<!-- Hiệu ứng tim rơi -->
-<script>
-function createHeart() {
-  const heart = document.createElement('div');
-  heart.className = 'heart';
-  heart.textContent = '❤️';
-  heart.style.left = Math.random() * 100 + 'vw';
-  heart.style.animationDuration = (3 + Math.random() * 3) + 's';
-  document.body.appendChild(heart);
-  setTimeout(()=>heart.remove(),6000);
-}
-setInterval(createHeart, 400);
-</script>
-
 </body>
 </html>

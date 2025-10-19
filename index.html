@@ -130,6 +130,7 @@
   }
 </style>
 </head>
+
 <body>
   <div class="sun"></div>
   <div class="cloud small"></div>
@@ -140,14 +141,15 @@
   <div class="card" id="openCard">💌 Chúc Vy 20/10 vui vẻ 💖</div>
   <div class="letter" id="letter">Chúc Vy luôn xinh đẹp, hạnh phúc và được yêu thương như một nàng công chúa 🌸</div>
 
-  <audio id="bg-music" src="SongGio.mp3" autoplay loop></audio>
-
+  <!-- 🎵 Âm nhạc -->
+  <audio id="bg-music" src="SongGio.mp3" loop></audio>
 
 <script>
   const btn = document.getElementById('openCard');
   const letter = document.getElementById('letter');
-  const music = document.getElementById('music');
+  const music = document.getElementById('bg-music');
 
+  // Khi click vào thiệp
   btn.addEventListener('click', async () => {
     btn.style.display = 'none';
     letter.style.display = 'block';

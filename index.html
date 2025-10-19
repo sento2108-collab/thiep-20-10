@@ -16,6 +16,7 @@
     overflow: hidden;
   }
 
+  /* Mặt trời */
   .sun {
     position: absolute;
     top: 50px;
@@ -26,17 +27,19 @@
     border-radius: 50%;
     animation: glow 4s infinite alternate;
   }
+
   @keyframes glow {
     from { opacity: 0.8; transform: scale(1); }
     to { opacity: 1; transform: scale(1.1); }
   }
 
+  /* Mây */
   .cloud {
     position: absolute;
     background: #fff;
     border-radius: 50%;
     opacity: 0.9;
-    animation: float 20s linear infinite;
+    animation: float 15s linear infinite;
   }
   .cloud::before, .cloud::after {
     content: '';
@@ -44,49 +47,45 @@
     background: #fff;
     border-radius: 50%;
   }
+
   .cloud.small {
-    width: 70px;
-    height: 40px;
-    top: 100px;
-    left: -150px;
+    width: 70px; height: 40px; top: 100px; left: -150px;
     animation-delay: 3s;
   }
   .cloud.small::before { width: 40px; height: 40px; left: -20px; top: 0; }
   .cloud.small::after { width: 40px; height: 40px; left: 40px; top: 0; }
+
   .cloud.large {
-    width: 120px;
-    height: 60px;
-    top: 200px;
-    left: -200px;
+    width: 120px; height: 60px; top: 200px; left: -200px;
   }
   .cloud.large::before { width: 60px; height: 60px; left: -30px; top: 0; }
   .cloud.large::after { width: 60px; height: 60px; left: 70px; top: 0; }
+
   @keyframes float {
     0% { transform: translateX(0); }
     100% { transform: translateX(120vw); }
   }
 
+  /* Cây */
   .tree {
     position: absolute;
     bottom: 0;
-    width: 40px;
-    height: 80px;
+    width: 40px; height: 80px;
     background: #795548;
     border-radius: 10px;
   }
   .tree::before {
     content: '';
     position: absolute;
-    bottom: 60px;
-    left: -20px;
-    width: 80px;
-    height: 60px;
+    bottom: 60px; left: -20px;
+    width: 80px; height: 60px;
     background: radial-gradient(circle, #66bb6a, #388e3c);
     border-radius: 50%;
   }
   .tree.left { left: 80px; }
   .tree.right { right: 80px; }
 
+  /* Thiệp */
   .card {
     background: white;
     padding: 20px 40px;
@@ -97,6 +96,7 @@
     color: #e75480;
     cursor: pointer;
     transition: all 0.5s;
+    z-index: 2;
   }
   .card:hover { transform: scale(1.05); }
 
@@ -110,7 +110,9 @@
     color: #ad1457;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     animation: fadeIn 1s ease;
+    z-index: 2;
   }
+
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
@@ -119,54 +121,41 @@
   /* Tim bay */
   .heart {
     position: absolute;
-    width: 20px;
-    height: 20px;
-    background: pink;
-    transform: rotate(45deg);
-    animation: floatUp 4s linear forwards;
+    bottom: 0;
+    color: #e91e63;
+    font-size: 20px;
+    animation: flyUp 6s linear infinite;
+    opacity: 0.8;
   }
-  .heart::before, .heart::after {
-    content: '';
+  @keyframes flyUp {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+  }
+
+  /* Pháo hoa */
+  .spark {
     position: absolute;
-    width: 20px;
-    height: 20px;
-    background: pink;
+    width: 5px; height: 5px;
+    background: gold;
     border-radius: 50%;
+    animation: explode 1s ease-out forwards;
   }
-  .heart::before { top: -10px; left: 0; }
-  .heart::after { left: -10px; top: 0; }
-  @keyframes floatUp {
-    0% { transform: translateY(0) scale(1) rotate(45deg); opacity: 1; }
-    100% { transform: translateY(-150vh) scale(0.5) rotate(45deg); opacity: 0; }
+  @keyframes explode {
+    to { transform: translate(var(--x), var(--y)); opacity: 0; }
   }
 
   /* Bồ câu */
   .dove {
     position: absolute;
-    top: 200px;
+    top: 30%;
     left: -100px;
-    width: 60px;
-    height: 60px;
-    background: url('kaito.png') center/contain no-repeat;
+    font-size: 40px;
     animation: flyAcross 12s linear infinite;
   }
   @keyframes flyAcross {
-    0% { transform: translateX(0) translateY(0) scale(1); opacity: 1; }
-    100% { transform: translateX(120vw) translateY(-50px) scale(1.1); opacity: 0.8; }
-  }
-
-  /* Pháo hoa */
-  .sparkle {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    background: gold;
-    border-radius: 50%;
-    animation: sparkle 1s ease-out forwards;
-  }
-  @keyframes sparkle {
-    0% { transform: scale(1); opacity: 1; }
-    100% { transform: scale(3); opacity: 0; }
+    0% { transform: translateX(0) translateY(0); }
+    50% { transform: translateX(50vw) translateY(-30px); }
+    100% { transform: translateX(110vw) translateY(0); }
   }
 </style>
 </head>
@@ -177,52 +166,56 @@
   <div class="cloud large"></div>
   <div class="tree left"></div>
   <div class="tree right"></div>
-  <div class="dove"></div>
+
+  <div class="dove">🕊️</div>
 
   <div class="card" id="openCard">💌 Chúc Vy 20/10 vui vẻ 💖</div>
   <div class="letter" id="letter">Chúc Vy luôn xinh đẹp, hạnh phúc và được yêu thương như một nàng công chúa 🌸</div>
 
-  <audio id="bg-music" src="SongGio.mp3" preload="auto" loop></audio>
+  <audio id="bgm" src="SongGio.mp3" preload="auto" loop></audio>
 
 <script>
 const btn = document.getElementById('openCard');
 const letter = document.getElementById('letter');
-const music = document.getElementById('bg-music');
+const bgm = document.getElementById('bgm');
 
-btn.addEventListener('click', async () => {
-  btn.style.display = 'none';
-  letter.style.display = 'block';
-  startHearts();
-  startFireworks();
-  try {
-    music.muted = false;
-    await music.play();
-  } catch (err) {
-    console.log('⚠️ Nhấn mới phát nhạc:', err);
-  }
+/* Phát nhạc khi click */
+document.addEventListener("click", () => {
+  bgm.play().catch(()=>{});
 });
 
-function startHearts() {
-  setInterval(() => {
-    const heart = document.createElement('div');
-    heart.className = 'heart';
-    heart.style.left = Math.random() * 100 + 'vw';
-    heart.style.background = `hsl(${Math.random()*360}, 70%, 80%)`;
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 4000);
-  }, 300);
-}
+/* Khi mở thiệp */
+btn.addEventListener("click", () => {
+  btn.style.display = "none";
+  letter.style.display = "block";
+  bgm.play();
 
-function startFireworks() {
-  for (let i = 0; i < 20; i++) {
-    const s = document.createElement('div');
-    s.className = 'sparkle';
-    s.style.left = 50 + Math.random() * 50 + 'vw';
-    s.style.top = 50 + Math.random() * 20 + 'vh';
-    document.body.appendChild(s);
-    setTimeout(() => s.remove(), 1000);
-  }
-}
+  // Tim bay
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.textContent = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = 3 + Math.random() * 3 + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+  }, 400);
+
+  // Pháo hoa nhẹ
+  setInterval(() => {
+    const sparkCount = 10;
+    for (let i = 0; i < sparkCount; i++) {
+      const spark = document.createElement("div");
+      spark.className = "spark";
+      spark.style.left = window.innerWidth / 2 + "px";
+      spark.style.top = window.innerHeight / 2 + "px";
+      spark.style.setProperty("--x", `${(Math.random() - 0.5) * 200}px`);
+      spark.style.setProperty("--y", `${(Math.random() - 0.5) * 200}px`);
+      document.body.appendChild(spark);
+      setTimeout(() => spark.remove(), 1000);
+    }
+  }, 1500);
+});
 </script>
 </body>
 </html>

@@ -2,234 +2,107 @@
 <html lang="vi">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>💌 Chúc Vy 20/10 — Kaito Kid 💐</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Chúc Vy 20/10 💖</title>
 <style>
-:root {
-  --bg1: #fff0f4;
-  --bg2: #f7f2ff;
-  --accent: #ff6fa3;
-  --muted: #6b5561;
-}
-
-html, body {
-  height: 100%;
-  margin: 0;
-  font-family: "Poppins","Segoe UI",Arial,sans-serif;
-  background: linear-gradient(120deg, var(--bg1), var(--bg2));
-  color: var(--muted);
-  overflow: hidden;
-}
-
-.stage {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 28px;
-  box-sizing: border-box;
-}
-
-/* Thanh tiêu đề */
-.topbar {
-  position: absolute;
-  top: 18px; left: 18px; right: 18px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.title {
-  font-size: 28px;
-  font-weight: 700;
-  color: #333;
-  text-shadow: 0 2px 0 rgba(255,255,255,0.65);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.title .flower { font-size: 28px; }
-
-.replay {
-  background: linear-gradient(180deg, #ffffff, #ffeef6);
-  border: 1px solid rgba(0,0,0,0.06);
-  padding: 8px 14px;
-  border-radius: 12px;
-  cursor: pointer;
-  font-weight: 600;
-  box-shadow: 0 6px 18px rgba(170,50,110,0.08);
-  transition: all 0.3s ease;
-}
-.replay:hover { background: #fff3fa; transform: translateY(-2px); }
-
-/* Hình Kaito */
-.kaito-wrap {
-  position: absolute;
-  left: 10%;
-  bottom: 10%;
-  width: 340px;
-  transform-origin: 50% 100%;
-}
-#kaito {
-  width: 100%;
-  filter: drop-shadow(0 18px 28px rgba(130,45,80,0.18));
-}
-
-/* Thiệp */
-.card {
-  position: absolute;
-  right: 10%;
-  top: 50%;
-  transform: translateY(-50%) scale(.8);
-  width: 340px;
-  height: 200px;
-  border-radius: 16px;
-  background: linear-gradient(135deg,#fff7fb,#ffeef6);
-  box-shadow: 0 20px 60px rgba(200,60,110,0.12);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  opacity: 0;
-  animation: fadeIn 1.6s ease forwards 1.6s;
-}
-
-.card h2 {
-  margin: 0;
-  font-size: 20px;
-  color: #ff2f7f;
-  font-weight: 800;
-  text-shadow: 0 6px 22px rgba(255,101,152,0.12);
-}
-.card p {
-  margin: 10px 0 0;
-  color: #6c5860;
-  line-height: 1.35;
-  font-size: 14px;
-  padding: 0 10px;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-50%) scale(.7); }
-  to { opacity: 1; transform: translateY(-50%) scale(1); }
-}
-
-/* Glow nền */
-.glow {
-  position: absolute;
-  left: 50%; top: 50%;
-  width: 480px; height: 480px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,150,170,0.18), transparent 70%);
-  filter: blur(30px);
-  transform: translate(-50%, -50%) scale(0.8);
-  opacity: 0;
-  animation: glowIn 1.2s ease forwards 1.8s;
-}
-@keyframes glowIn {
-  from { opacity: 0; transform: translate(-50%,-50%) scale(.5); }
-  to { opacity: 1; transform: translate(-50%,-50%) scale(1); }
-}
-
-/* Bồ câu bay */
-.dove {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  background: url('https://upload.wikimedia.org/wikipedia/commons/0/04/Dove_emoji.png') no-repeat center/contain;
-  opacity: 0.85;
-  animation: fly 12s linear infinite;
-}
-@keyframes fly {
-  0% { transform: translate(-10vw, 20vh) scale(0.9) rotate(5deg); opacity: 0.8; }
-  25% { transform: translate(40vw, 5vh) scale(1) rotate(-5deg); }
-  50% { transform: translate(80vw, 25vh) scale(1.1) rotate(5deg); }
-  75% { transform: translate(50vw, 70vh) scale(1) rotate(-3deg); }
-  100% { transform: translate(-10vw, 20vh) scale(0.9) rotate(5deg); opacity: 0.8; }
-}
-.dove:nth-child(2) { animation-delay: 3s; animation-duration: 14s; transform: scale(0.8); }
-.dove:nth-child(3) { animation-delay: 6s; animation-duration: 16s; transform: scale(1.2); }
-
-/* Gợi ý */
-.hint {
-  position: absolute;
-  right: 18px;
-  bottom: 18px;
-  font-size: 13px;
-  color: #7a5b6a;
-  background: rgba(255,255,255,0.6);
-  padding: 8px 12px;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
-}
-
-/* Responsive */
-@media (max-width: 720px) {
-  .kaito-wrap {
-    position: relative;
-    left: 0;
-    bottom: auto;
-    width: 70%;
-    margin-bottom: 40px;
+  :root{
+    --bg1: #fff5fa;
+    --bg2: #f7f3ff;
+    --text: #4a3b46;
+    --accent: #ff7bab;
   }
-  .card {
-    position: relative;
-    right: auto;
-    top: auto;
-    transform: none;
-    width: 90%;
-    margin-top: 20px;
-  }
-  .stage {
-    flex-direction: column;
+
+  html, body {
+    height: 100%;
+    margin: 0;
+    font-family: "Poppins", "Segoe UI", sans-serif;
+    background: linear-gradient(120deg, var(--bg1), var(--bg2));
+    overflow: hidden;
+    display: flex;
+    align-items: center;
     justify-content: center;
   }
-}
+
+  h1 {
+    position: relative;
+    font-size: 36px;
+    text-align: center;
+    color: var(--text);
+    font-weight: 700;
+    text-shadow: 0 3px 10px rgba(255, 180, 200, 0.6);
+  }
+
+  .dove {
+    position: absolute;
+    font-size: 32px;
+    animation: fly 8s linear infinite;
+    opacity: 0.9;
+  }
+
+  @keyframes fly {
+    0% {
+      transform: translateX(-10vw) translateY(0) rotate(0deg);
+    }
+    25% {
+      transform: translateX(25vw) translateY(-10vh) rotate(10deg);
+    }
+    50% {
+      transform: translateX(50vw) translateY(10vh) rotate(-10deg);
+    }
+    75% {
+      transform: translateX(75vw) translateY(-5vh) rotate(5deg);
+    }
+    100% {
+      transform: translateX(110vw) translateY(0) rotate(0deg);
+    }
+  }
+
+  .dove:nth-child(2) { animation-delay: 2s; font-size: 28px; top: 20%; }
+  .dove:nth-child(3) { animation-delay: 4s; font-size: 36px; top: 40%; }
+  .dove:nth-child(4) { animation-delay: 6s; font-size: 30px; top: 60%; }
+
+  .glow {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(255,192,203,0.25) 0%, transparent 70%);
+    filter: blur(20px);
+    z-index: -1;
+  }
+
+  /* Ẩn thanh điều khiển audio */
+  audio {
+    display: none;
+  }
 </style>
 </head>
 <body>
-  <div class="stage">
-    <div class="topbar">
-      <div class="title">💌 <strong>Chúc Vy 20/10</strong> <span class="flower">🌷</span></div>
-      <button class="replay" id="replayBtn">🔁 Xem lại</button>
-    </div>
 
-    <!-- Bồ câu -->
-    <div class="dove"></div>
-    <div class="dove"></div>
-    <div class="dove"></div>
+  <div class="glow"></div>
 
-    <div class="kaito-wrap">
-      <img id="kaito" src="kaito.png" alt="Kaito Kid">
-    </div>
+  <h1>💐 Chúc Vy 20/10 vui vẻ 💖</h1>
 
-    <div class="card" id="card">
-      <h2>💐 Chúc mừng ngày 20/10</h2>
-      <p>Chúc Vy luôn vui vẻ, xinh đẹp và rạng rỡ như đóa hoa 🌸</p>
-    </div>
+  <div class="dove">🕊️</div>
+  <div class="dove">🕊️</div>
+  <div class="dove">🕊️</div>
+  <div class="dove">🕊️</div>
 
-    <div class="glow" id="glow"></div>
+  <!-- Nhạc tự động phát -->
+  <audio id="bgm" autoplay loop>
+    <source src="Sóng Gió.mp3" type="audio/mpeg">
+  </audio>
 
-    <div class="hint">Không có nhạc • Nhấn "Xem lại" để phát lại animation</div>
-  </div>
-
-<script>
-  const card = document.getElementById('card');
-  const glow = document.getElementById('glow');
-  const replayBtn = document.getElementById('replayBtn');
-
-  function replayAnimation() {
-    card.style.animation = 'none';
-    glow.style.animation = 'none';
-    void card.offsetWidth; // reset
-    card.style.animation = 'fadeIn 1.6s ease forwards 1.6s';
-    glow.style.animation = 'glowIn 1.2s ease forwards 1.8s';
-  }
-
-  replayBtn.addEventListener('click', replayAnimation);
-</script>
+  <script>
+    // Một số trình duyệt chặn autoplay — ta thử play lại sau khi load
+    window.addEventListener('load', () => {
+      const bgm = document.getElementById('bgm');
+      const playPromise = bgm.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          document.body.addEventListener('click', () => bgm.play(), { once: true });
+        });
+      }
+    });
+  </script>
 </body>
 </html>

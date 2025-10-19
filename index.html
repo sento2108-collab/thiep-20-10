@@ -2,6 +2,22 @@
 <html lang="en">
 
 <head>
+    <!-- 🌹 Các hình ảnh nền động -->
+<div class="background-decor">
+    <!-- Hoa rơi -->
+    <div class="flower" style="left:10%; animation-delay: 0s;"></div>
+    <div class="flower" style="left:30%; animation-delay: 3s;"></div>
+    <div class="flower" style="left:50%; animation-delay: 1.5s;"></div>
+    <div class="flower" style="left:70%; animation-delay: 5s;"></div>
+    <div class="flower" style="left:90%; animation-delay: 2.5s;"></div>
+
+    <!-- Bokeh -->
+    <div class="bokeh" style="width:80px; height:80px; left:20%; top:30%; animation-delay: 2s;"></div>
+    <div class="bokeh" style="width:100px; height:100px; left:60%; top:10%; animation-delay: 4s;"></div>
+    <div class="bokeh" style="width:60px; height:60px; left:80%; top:60%; animation-delay: 6s;"></div>
+    <div class="bokeh" style="width:120px; height:120px; left:40%; top:70%; animation-delay: 8s;"></div>
+</div>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -414,6 +430,51 @@
             -moz-osx-font-smoothing: grayscale;
             opacity: .8
         }
+        /* 🌸 Hiệu ứng nền động đẹp */
+body {
+    background: linear-gradient(135deg, #ffd1dc, #fff0f5, #ffe6eb);
+    background-size: 400% 400%;
+    animation: gradientFlow 12s ease infinite;
+    overflow: hidden;
+    position: relative;
+}
+
+/* 🌈 Chuyển màu nền nhẹ nhàng */
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 🌹 Hoa rơi nhẹ nhàng */
+.flower {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/616/616408.png');
+    background-size: cover;
+    opacity: 0.8;
+    animation: fall 10s linear infinite;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
+
+/* 🌸 Hiệu ứng bokeh tròn */
+.bokeh {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    animation: floatBokeh 12s infinite ease-in-out;
+}
+
+@keyframes floatBokeh {
+    0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
+    50% { transform: translateY(-30px) scale(1.3); opacity: 1; }
+}
+
 
         /* style letter */
         /* .box-content.active {

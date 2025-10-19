@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Chúc mừng 20/10</title>
+  <style>
+    :root{--bg:#fff6f9;--card:#fff;--accent:#e91e63}
+    html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial}
+    body{display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,var(--bg),#fff);padding:20px}
+    .card{
+      width:100%;max-width:720px;background:var(--card);border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.12);
+      overflow:hidden;transform:translateY(0);transition:transform .35s;
+    }
+    .hero{position:relative;padding:36px;text-align:center;background:linear-gradient(135deg,#fff 0%, #ffeef6 100%);}
+    .hero img{max-width:180px;border-radius:12px;display:block;margin:0 auto 20px}
+    h1{margin:6px 0 4px;font-size:28px;color:var(--accent)}
+    p.lead{margin:0 0 18px;color:#444;font-size:16px}
+    .message{padding:24px;border-top:1px dashed #fde8f0;background:linear-gradient(180deg,rgba(255,255,255,0),rgba(255,240,246,0.6))}
+    .message p{font-size:18px;line-height:1.5;margin:0 0 12px}
+    .btns{display:flex;gap:12px;justify-content:center;margin-top:12px}
+    button{background:var(--accent);color:white;border:0;padding:10px 16px;border-radius:10px;font-weight:600;cursor:pointer}
+    .small{font-size:13px;color:#777;text-align:center;padding:12px}
+    /* heart animation */
+    .hearts{position:absolute;left:10px;top:10px;pointer-events:none}
+    .heart{width:18px;height:18px;background:var(--accent);clip-path:polygon(50% 0%, 100% 38%, 82% 100%, 50% 80%, 18% 100%, 0% 38%);position:absolute;opacity:.9;animation:rise 3s linear infinite}
+    @keyframes rise{0%{transform:translateY(0) scale(.7);opacity:1}100%{transform:translateY(-180px) scale(1.2);opacity:0}}
+    /* modal */
+    .overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;padding:20px}
+    .modal{background:white;padding:20px;border-radius:12px;max-width:600px;width:100%;text-align:center}
+    .close{background:#eee;border-radius:8px;padding:6px 10px;border:0}
+    @media (max-width:480px){
+      h1{font-size:22px}
+      .hero img{max-width:140px}
+      .message p{font-size:16px}
+    }
+  </style>
+</head>
+<body>
+  <div class="card" id="card">
+    <div class="hero">
+      <div class="hearts" aria-hidden>
+        <div class="heart" style="left:10px;animation-delay:0s"></div>
+        <div class="heart" style="left:60px;animation-delay:.6s"></div>
+        <div class="heart" style="left:120px;animation-delay:1.2s"></div>
+      </div>
+      <img src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=800&auto=format&fit=crop" alt="Hoa" />
+      <h1>Chúc mừng 20/10</h1>
+      <p class="lead">Gửi đến bạn — những người phụ nữ tuyệt vời</p>
+    </div>
+
+    <div class="message">
+      <p>Thân gửi bạn,</p>
+      <p>Chúc bạn luôn vui, xinh, tràn đầy năng lượng và đạt được những điều mình mong muốn. Cảm ơn vì đã là một phần quan trọng trong cuộc sống.</p>
+      <div class="btns">
+        <button id="playBtn">Bật nhạc</button>
+        <button id="openBtn">Mở lời nhắn</button>
+      </div>
+    </div>
+
+    <div class="small">Quét QR code hoặc mở link để xem thiệp này — Chúc bạn 20/10 vui vẻ! 💐</div>
+  </div>
+
+  <div class="overlay" id="overlay">
+    <div class="modal">
+      <h3>Lời nhắn dành cho bạn</h3>
+      <p id="personalMsg">Bạn là người rất đặc biệt — chúc bạn một ngày 20/10 ấm áp và hạnh phúc!</p>
+      <div style="margin-top:12px"><button class="close" id="closeBtn">Đóng</button></div>
+    </div>
+  </div>
+
+  <audio id="bgm" loop>
+    <source src="https://actions.google.com/sounds/v1/ambiences/soft_bells.ogg" type="audio/ogg">
+  </audio>
+
+  <script>
+    const playBtn = document.getElementById('playBtn');
+    const bgm = document.getElementById('bgm');
+    const overlay = document.getElementById('overlay');
+    const openBtn = document.getElementById('openBtn');
+    const closeBtn = document.getElementById('closeBtn');
+
+    playBtn.addEventListener('click', () => {
+      if (bgm.paused) {
+        bgm.play().catch(()=> alert('Trình duyệt chặn phát nhạc tự động. Nhấn cho phép hoặc chạm màn hình.'));
+        playBtn.textContent = 'Tắt nhạc';
+      } else {
+        bgm.pause();
+        playBtn.textContent = 'Bật nhạc';
+      }
+    });
+
+    openBtn.addEventListener('click', ()=> overlay.style.display = 'flex');
+    closeBtn.addEventListener('click', ()=> overlay.style.display = 'none');
+
+    // Nếu muốn gắn lời nhắn cá nhân qua querystring: ?msg=...
+    const params = new URLSearchParams(location.search);
+    if (params.has('msg')){
+      const m = decodeURIComponent(params.get('msg'));
+      document.getElementById('personalMsg').textContent = m;
+    }
+  </script>
+</body>
+</html>

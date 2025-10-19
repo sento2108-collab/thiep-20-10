@@ -167,7 +167,8 @@
   <div class="dove" style="animation-delay:5s; animation-duration:18s;"></div>
   <div class="dove" style="animation-delay:8s; animation-duration:20s;"></div>
 
-  <img class="kaito" src="https://i.imgur.com/Rv8T2YY.png" alt="Kaito Kid" />
+  <!-- ảnh Kaito Kid (bạn có thể thay link nếu muốn ảnh khác) -->
+  <img class="kaito" src="https://i.ibb.co/GscWzCP/kaito.png" alt="Kaito Kid" />
 
   <div class="main-btn" id="openCard">💌 Chúc Vy 20/10 vui vẻ 💖</div>
 
@@ -185,9 +186,9 @@
 
     btn.addEventListener('click', () => {
       card.classList.add('show');
-      music.play().catch(() => {
-        alert("🎵 Trình duyệt chặn tự động phát nhạc — hãy nhấn lại để nghe nhé!");
-      });
+      // Phát nhạc khi người dùng click - không bị chặn
+      music.volume = 0.8;
+      music.play();
     });
   </script>
 </body>
